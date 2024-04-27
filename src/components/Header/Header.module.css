@@ -1,0 +1,98 @@
+/* src/components/Header/Header.module.css */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+@keyframes slideUp {
+    to {
+      transform: translate(-50%, -100%);
+      opacity: 0;
+    }
+  }
+  
+  /* Ajouter une nouvelle classe pour le scroll */
+  .scrolledText {
+    animation: slideUp 0.5s forwards;
+  }
+
+
+@keyframes textAppear {
+  from {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animatedText {
+  animation-name: textAppear;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10; /* Adjusted for header */
+    background: none; /* ou utilisez la couleur de fond de votre choix */
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoLink {
+    text-decoration: none;
+}
+
+.logo {
+    color: #fff;
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 10px; /* Espace entre l'image du logo et le texte */
+    text-decoration: none; /* Assurez-vous qu'il n'y a pas de soulignement */
+}
+
+.logoImg {
+    width: 50px; /* Définissez la largeur du logo */
+    height: auto; /* Pour conserver les proportions de l'image */
+}
+
+.navList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navItem {
+    list-style: none;
+    margin-left: 20px;
+}
+
+.navLink {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navLink:hover, 
+.navLink.active {
+    background: #fff;
+    color: #2b1055;
+}
+
+/* Vous pouvez ajouter le reste de votre style global ici ou dans App.css */

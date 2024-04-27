@@ -1,0 +1,92 @@
+/* Labyrinthe.module.css */
+
+.labyrinthTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em; /* Ajustez selon la taille que vous souhaitez */
+  color: #FFF; /* La couleur du texte, adaptez-la à votre thème si nécessaire */
+  margin-bottom: -180px; /* Ajoutez de l'espace en dessous du titre si nécessaire */
+  margin-top: 300px;
+}
+
+.mazeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Utilise toute la hauteur de la fenêtre de visualisation */
+  width: 100vw;
+  /* Utilise toute la largeur de la fenêtre de visualisation */
+}
+
+.maze {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  /* Centrage automatique dans les deux directions */
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.wall,
+.path,
+.in,
+.out,
+.pathActive {
+  width: 40px;
+  /* Augmente la taille des cellules */
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.wall {
+  background-color: black;
+}
+
+.path {
+  background-color: lightgrey;
+}
+
+.in {
+  background-color: green;
+}
+
+.out {
+  background-color: red;
+}
+
+/* Labyrinthe.module.css */
+.visitedOnce {
+  animation: pulse 1s infinite;
+  background-color: yellow;
+}
+
+.visitedMultiple {
+  background-color: orange;
+  /* Plus foncé pour plusieurs passages */
+  animation: pulse 1s infinite;
+}
+
+
+/* Labyrinthe.module.css */
+
+.visitedOnce {
+  background-color: yellow; /* ou toute autre couleur que vous souhaitez utiliser pour marquer la case visitée */
+}
+
+.visitedMultiple {
+  position: relative; /* Important pour positionner correctement le compteur */
+}
+
+
+.pathActive {
+  animation: highlightPath 1s forwards; /* L'animation ne se joue qu'une seule fois quand on arrive sur la case */
+}
+
+@keyframes highlightPath {
+  from { background-color: lightgrey; }
+  to { background-color: yellow; } /* Changez la couleur finale selon vos préférences */
+}

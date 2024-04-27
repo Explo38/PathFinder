@@ -1,0 +1,107 @@
+/* skill.module.css */
+
+
+.skillsTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em; /* Ajustez la taille de la police comme vous le souhaitez */
+    color: #fff; /* La couleur du texte, si nécessaire */
+    margin-bottom: 150px; /* Ajoutez un peu d'espace en dessous du titre */
+}
+  
+
+.skill {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    /* Ajouté pour avoir un peu d'espace autour des compétences */
+    z-index: 5;
+}
+
+.skillName {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.outer {
+    position: relative;
+    background: none;
+    
+}
+
+.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    color: white;
+    font-size: 1.8em;
+
+}
+
+.number {
+    color: white;
+}
+
+.skillsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 250px;
+    margin-bottom: 20%;
+
+}
+
+@keyframes loadSkill {
+    from {
+        stroke-dashoffset: 880;
+    }
+
+    to {
+        /* L'état final est défini dans le style en ligne dans le composant React, donc 'to' peut être vide */
+    }
+}
+
+.circle {
+    background: none;
+}
+
+/* Vous pouvez ajouter ce sélecteur si vous voulez être plus spécifique */
+svg circle {
+    transition: stroke-dashoffset 2s ease-out;
+    /* Cela ajoutera une transition douce à l'animation */
+}
+
+
+
+.skillRing {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .skillRing::before {
+    content: '';
+    position: absolute;
+    
+    width: calc(80% + 20px); /* Ajuster en fonction de l'épaisseur de la bordure */
+    height: calc(80% + 20px); /* Ajuster en fonction de l'épaisseur de la bordure */
+    border-radius: 50%;
+    z-index: -1; /* Important pour que l'anneau de néon soit derrière */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.5),
+                 0 0 40px rgba(255, 255, 255, 0.5),
+                 0 0 80px rgba(255, 255, 255, 0.5);
+  }
+  
+  .circle {
+    z-index: 1; /* Assurez-vous que c'est supérieur au z-index de ::before */
+  }
+  

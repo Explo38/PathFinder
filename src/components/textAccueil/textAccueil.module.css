@@ -1,0 +1,46 @@
+/* src/components/TextAccueil/textAccueil.module.css */
+
+.text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    color: white;
+    opacity: 0;
+    white-space: nowrap;
+    z-index: 1000;
+    transition: transform 0.5s, font-size 0.5s, top 0.5s, left 0.5s, opacity 0.5s; /* Animation transition */
+  }
+  
+  .animateIn {
+    opacity: 1;
+    animation: textAppear 2s forwards;
+  }
+  
+  .moveToTop {
+    top: 20px; /* Ajustez en fonction de la position de votre logo */
+    left: 20px; /* Ajustez en fonction de la position de votre logo */
+    font-size: 1em; /* Ajustez en fonction de la taille de votre logo */
+    transform: translate(0, 0); /* Remettre la transformation à son état initial */
+  }
+  
+  @keyframes textAppear {
+    from {
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+  .text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: white;
+    white-space: nowrap;
+    z-index: 1000;
+    /* Retirer les autres propriétés d'animation et de transformation, react-spring s'en occupe */
+  }

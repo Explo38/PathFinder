@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+
+.mazeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Utilise toute la hauteur de la fenêtre de visualisation */
+    width: 100vw;
+    /* Utilise toute la largeur de la fenêtre de visualisation */
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: linear-gradient(#2b1055, #7597de);
+}
+
+.heading {
+  opacity: 0; /* Commencez invisible pour l'animation */
+  font-size: 3rem; /* Augmentez la taille du texte */
+  color: white; /* Changez la couleur en blanc */
+  text-align: center; /* Centre le texte horizontalement */
+  line-height: 1.2; /* Ajustez l'espacement entre les lignes pour bien diviser le texte sur deux lignes */
+  white-space: pre-line; /* Respecte les retours à la ligne dans la chaîne de texte */
+}
+  
+  .beforeAnimation {
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  .afterAnimation {
+    height: 100vh;
+    background-color: #fff;
+  }
+  
