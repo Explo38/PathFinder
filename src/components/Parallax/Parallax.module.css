@@ -1,143 +1,35 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
-
-.no-select {
+/* Désactivation de la sélection pour tout l'élément */
+.noSelect {
     -webkit-touch-callout: none;  /* iOS Safari */
     -webkit-user-select: none;    /* Safari */
     -khtml-user-select: none;     /* Konqueror HTML */
-    -moz-user-select: none;       /* Old versions of Firefox */
+    -moz-user-select: none;       /* Anciennes versions de Firefox */
     -ms-user-select: none;        /* Internet Explorer/Edge */
-    user-select: none;            /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+    user-select: none;            /* Version non-préfixée, actuellement supportée par Chrome, Opera et Firefox */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background: linear-gradient(#2b1055, #7597de);
-}
-
-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-}
-
-header .logo {
-    color: #fff;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 2em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-header ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header ul li {
-    list-style: none;
-    margin-left: 20px;
-}
-
-header ul li a {
-    text-decoration: none;
-    padding: 6px 15px;
-    color: #fff;
-    border-radius: 20px;
-}
-
-header ul li a:hover, 
-header ul li a.active {
-    background: #fff;
-    color: #2b1055;
-}
-
-section {
-    position: relative;
+/* Section englobant la parallax */
+.parallaxSection {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     overflow: hidden;
 }
 
-section img {
+/* Conteneur pour les couches de parallax */
+.parallaxContainer {
+    width: 100%;
+    height: 100%;
+}
+
+/* Style de base pour toutes les couches de parallax */
+.parallaxLayer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    pointer-events: none;
+    will-change: transform, opacity;
+    background-size: cover; /* Assure que l'image couvre toute la couche */
+    background-position: center; /* Centrage de l'image */
 }
-
-section img#planet {
-    mix-blend-mode: screen;
-    z-index: 2;
-}
-
-section img#stars {
-    z-index: 1;
-}
-
-section img#mountains_behind {
-    z-index: 3;
-}
-
-section img#mountains_front {
-    z-index: 6;
-}
-
-section img#mountains_front_claire {
-    z-index: 6;
-}
-
-section img#mountains_front_sombre {
-    z-index: 7;
-}
-
-#pathfinder-text {
-    position: absolute;
-    color: #fff;
-    white-space: nowrap;
-    font-size: 8vw;
-    z-index: 7;
-    margin-top: 480px;
-}
-
-@keyframes growAndAppear {
-    0% {
-        opacity: 0;
-        transform: scale(0.1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-#pathfinder-text {
-    animation: growAndAppear 3s ease forwards;
-    animation-delay: 2s;
-}
-
-
-
