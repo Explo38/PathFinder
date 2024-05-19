@@ -1,7 +1,10 @@
+// src/components/MiniJeux/MiniJeux.tsx
 import React, { useState, useEffect } from 'react';
 import styles from './MiniJeux.module.css';
-import playerImage from './asset/Robotplayer.png'; // Chemin vers l'image du joueur
-import machineImage from './asset/RobotMachine.png'; // Chemin vers l'image du joueur machine
+import playerImage from './asset/Robotplayer.png';
+import machineImage from './asset/RobotMachine.png';
+import Switch from './Switch'; // Import du composant Switch
+import { useLanguage } from '../../context/LanguageContext'; // Importer le contexte de langue
 
 // Fonction pour générer un labyrinthe
 const generateMaze = (size: number): any[][] => {
@@ -47,6 +50,7 @@ const initialMaze = [
 ];
 
 const MiniJeux: React.FC = () => {
+  const { language } = useLanguage(); // Utiliser le contexte de langue
   const [level, setLevel] = useState(1);
   const [maze, setMaze] = useState(initialMaze);
   const [playerPosition, setPlayerPosition] = useState<[number, number]>([1, 0]);
@@ -56,6 +60,7 @@ const MiniJeux: React.FC = () => {
   const [lastTime, setLastTime] = useState<number | null>(null);
   const [machineRunning, setMachineRunning] = useState(false);
   const [visited, setVisited] = useState<Set<string>>(new Set());
+  const [isMachineActive, setIsMachineActive] = useState(true); // État pour activer/désactiver le joueur machine
 
   // Définir les niveaux maximum en fonction de la taille de l'écran
   const getMaxLevel = () => {
@@ -116,7 +121,8 @@ const MiniJeux: React.FC = () => {
 
         if (backtrackMoves.length > 0) {
           const [dx, dy] = backtrackMoves[Math.floor(Math.random() * backtrackMoves.length)];
-          setMachinePosition([currentRow + dx, currentCol + dy]);
+          const newMachinePosition: [number, number] = [currentRow + dx, currentCol + dy];
+          setMachinePosition(newMachinePosition);
         }
       }
 
@@ -170,15 +176,15 @@ const MiniJeux: React.FC = () => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
-    if (machineRunning) {
+    if (machineRunning && isMachineActive) {
       interval = setInterval(() => {
         moveMachine();
-      }, 250); // Machine moves every 250 ms (faster)
+      }, 250); // Déplace la machine toutes les 250 ms
     }
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [machineRunning, machinePosition]);
+  }, [machineRunning, machinePosition, isMachineActive]);
 
   useEffect(() => {
     const [playerRow, playerCol] = playerPosition;
@@ -246,11 +252,40 @@ const MiniJeux: React.FC = () => {
     });
   };
 
+  const toggleMachine = () => {
+    setIsMachineActive(!isMachineActive);
+  };
+
+  const textContent: { [key: string]: { level: string, timeElapsed: string, lastTime: string, prevLevel: string, restart: string, nextLevel: string, activateMachine: string, playerFoundExit: string, machineFoundExit: string } } = {
+    fr: {
+      level: "Niveau",
+      timeElapsed: "Temps écoulé",
+      lastTime: "Dernier temps",
+      prevLevel: "Niveau précédent",
+      restart: "Recommencer",
+      nextLevel: "Niveau suivant",
+      activateMachine: "Activer la machine",
+      playerFoundExit: "Vous avez trouvé la sortie! Temps: {time} secondes",
+      machineFoundExit: "La machine a trouvé la sortie!"
+    },
+    en: {
+      level: "Level",
+      timeElapsed: "Time elapsed",
+      lastTime: "Last time",
+      prevLevel: "Previous level",
+      restart: "Restart",
+      nextLevel: "Next level",
+      activateMachine: "Activate machine",
+      playerFoundExit: "You found the exit! Time: {time} seconds",
+      machineFoundExit: "The machine found the exit!"
+    }
+  };
+
   return (
     <div className={styles.gameContainer}>
-      <div className={styles.levelCounter}>Niveau: {level}</div>
-      <div className={styles.timer}>Temps écoulé: {timeElapsed} secondes</div>
-      {lastTime !== null && <div className={styles.lastTime}>Dernier temps: {lastTime} secondes</div>}
+      <div className={styles.levelCounter}>{textContent[language].level}: {level}</div>
+      <div className={styles.timer}>{textContent[language].timeElapsed}: {timeElapsed} {language === 'fr' ? 'secondes' : 'seconds'}</div>
+      {lastTime !== null && <div className={styles.lastTime}>{textContent[language].lastTime}: {lastTime} {language === 'fr' ? 'secondes' : 'seconds'}</div>}
       <div className={styles.mazeContainer}>
         {maze.map((row, rowIndex) => (
           <div key={rowIndex} className={styles.row}>
@@ -270,7 +305,7 @@ const MiniJeux: React.FC = () => {
               return (
                 <div key={cellIndex} className={`${styles.cell} ${styles[cellType]}`}>
                   {isPlayer && <img src={playerImage} alt="Player" className={styles.playerIcon} />}
-                  {isMachine && <img src={machineImage} alt="Machine" className={styles.machineIcon} />}
+                  {isMachine && isMachineActive && <img src={machineImage} alt="Machine" className={styles.machineIcon} />}
                 </div>
               );
             })}
@@ -278,9 +313,13 @@ const MiniJeux: React.FC = () => {
         ))}
       </div>
       <div className={styles.buttonContainer}>
-        <button onClick={handlePrevLevel} className={styles.prevLevelButton}>Niveau précédent</button>
-        <button onClick={handleRestart} className={styles.restartButton}>Recommencer</button>
-        <button onClick={handleNextLevel} className={styles.nextLevelButton}>Niveau suivant</button>
+        <button onClick={handlePrevLevel} className={styles.prevLevelButton}>{textContent[language].prevLevel}</button>
+        <button onClick={handleRestart} className={styles.restartButton}>{textContent[language].restart}</button>
+        <button onClick={handleNextLevel} className={styles.nextLevelButton}>{textContent[language].nextLevel}</button>
+      </div>
+      <div className={styles.switchContainer}>
+        <span>{textContent[language].activateMachine}: </span>
+        <Switch isOn={isMachineActive} handleToggle={toggleMachine} onColor="#06D6A0" />
       </div>
     </div>
   );

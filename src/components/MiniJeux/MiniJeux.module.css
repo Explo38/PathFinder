@@ -137,3 +137,37 @@ body, html {
     }
   }
   
+  
+  .switchContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: white; /* Ajoute cette ligne pour rendre le texte visible */
+  }
+  
+  .activateButton {
+    margin-right: 10px; /* Espace entre le bouton et le texte */
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #2b1055;
+    background-color: white;
+    border: 2px solid #2b1055;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    
+  }
+  
+  .activateButton:hover {
+    background-color: #2b1055;
+    color: white;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px; /* Ajouter un espace au-dessus des boutons */
+  }
+  
