@@ -7,9 +7,10 @@ type PopupProps = {
   isVisible: boolean;
   onClose: () => void;
   imageSrc: string;  // Ajoutez cette prop si l'image change dynamiquement
+  instructions: string; // Ajoutez cette prop pour les instructions
 };
 
-const Popup: React.FC<PopupProps> = ({ isVisible, onClose, imageSrc }) => {
+const Popup: React.FC<PopupProps> = ({ isVisible, onClose, imageSrc, instructions }) => {
   if (!isVisible) return null;
 
   return (
@@ -17,7 +18,7 @@ const Popup: React.FC<PopupProps> = ({ isVisible, onClose, imageSrc }) => {
       <PopupContainer>
         <CloseButton onClick={onClose}>×</CloseButton>
         <PopupImage src={Robot_detourer} alt="Vue 3D" />
-        <InstructionText>Utilisez la molette de défilement vers le bas pour commencer la vue 3D.</InstructionText>
+        <InstructionText>{instructions}</InstructionText>
       </PopupContainer>
     </Overlay>
   );

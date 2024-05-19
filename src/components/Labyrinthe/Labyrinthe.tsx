@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Labyrinthe.module.css';
+import { useLanguage } from '../../context/LanguageContext'; // Importer le contexte de langue
 
 const maze = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -23,33 +24,31 @@ const path = [
 type Coordinate = [number, number]; // Type pour une paire de coordonnées [row, col]
 
 const Labyrinthe = () => {
+  const { language } = useLanguage(); // Utiliser le contexte de langue
   const [visited, setVisited] = useState<Coordinate[]>([]);
   
-
-  // Fonction pour vérifier si le labyrinthe est visible à l'écran
   const checkIfMazeIsVisible = () => {
-    
+    // Fonction à implémenter si nécessaire
   };
 
   useEffect(() => {
-    // Ajouter l'écouteur de scroll pour vérifier si le labyrinthe est visible
     window.addEventListener('scroll', checkIfMazeIsVisible);
 
-    // Nettoyer l'écouteur de scroll sur le démontage du composant
     return () => {
       window.removeEventListener('scroll', checkIfMazeIsVisible);
     };
   }, []);
 
-  // Vérifie si la cellule actuelle a été visitée pour appliquer la classe CSS correspondante
   const isPathActive = (rowIndex: number, cellIndex: number) => {
     return visited.some(([vRow, vCell]) => vRow === rowIndex && vCell === cellIndex);
   };
 
+  const title = language === 'fr' ? 'Dernier déplacement du robot' : 'Robot\'s Last Movement';
+
   return (
     <div>
-      <h2 className={styles.labyrinthTitle}>Dernier déplacement du robot</h2>
-      <section className={styles.mazeContainer} >
+      <h2 className={styles.labyrinthTitle}>{title}</h2>
+      <section className={styles.mazeContainer}>
         <div className={styles.maze}>
           {maze.map((row, rowIndex) => (
             <div key={rowIndex} className={styles.row}>

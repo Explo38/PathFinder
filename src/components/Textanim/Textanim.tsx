@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import './Textanim.module.css'; // Assurez-vous que ce fichier contient les bons styles
-import styles from './Textanim.module.css';
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ReactDOM from 'react-dom';
+import styles from './Textanim.module.css';
+import { useLanguage } from '../../context/LanguageContext'; // Importer le contexte de langue
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollAnimationSection: React.FC = () => {
+  const { language } = useLanguage(); // Utiliser le contexte de langue
   const sectionRef = useRef<HTMLDivElement>(null); // Référence à la section pour le déclencheur
   const textRef = useRef<HTMLHeadingElement>(null); // Référence au texte à animer
 
@@ -36,12 +35,15 @@ const ScrollAnimationSection: React.FC = () => {
     };
   }, []);
 
+  const headingText = language === 'fr' 
+    ? 'Explorer de nouveaux horizons grâce à notre robot autonome'
+    : 'Explore new horizons with our autonomous robot';
+
   return (
     <section className={styles.mazeContainer}>
       <div ref={sectionRef} className={styles.section}>
         <h1 ref={textRef} className={styles.heading}>
-          Explorer de nouveaux horizons     
-          grâce à notre robot autonome
+          {headingText}
         </h1>
       </div>
     </section>
@@ -49,15 +51,3 @@ const ScrollAnimationSection: React.FC = () => {
 };
 
 export default ScrollAnimationSection;
-
-function App() {
-  return (
-    <div>
-      <div className={styles.beforeAnimation}></div>
-      <ScrollAnimationSection />
-      <div className={styles.afterAnimation}></div>
-    </div>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));

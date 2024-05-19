@@ -1,35 +1,96 @@
 /* Désactivation de la sélection pour tout l'élément */
 .noSelect {
-    -webkit-touch-callout: none;  /* iOS Safari */
-    -webkit-user-select: none;    /* Safari */
-    -khtml-user-select: none;     /* Konqueror HTML */
-    -moz-user-select: none;       /* Anciennes versions de Firefox */
-    -ms-user-select: none;        /* Internet Explorer/Edge */
-    user-select: none;            /* Version non-préfixée, actuellement supportée par Chrome, Opera et Firefox */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Anciennes versions de Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Version non-préfixée, actuellement supportée par Chrome, Opera et Firefox */
 }
 
 /* Section englobant la parallax */
 .parallaxSection {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Conteneur pour les couches de parallax */
 .parallaxContainer {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* Style de base pour toutes les couches de parallax */
 .parallaxLayer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    will-change: transform, opacity;
-    background-size: cover; /* Assure que l'image couvre toute la couche */
-    background-position: center; /* Centrage de l'image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+  background-size: cover; /* Assure que l'image couvre toute la couche */
+  background-position: center; /* Centrage de l'image */
+}
+
+@keyframes textAppear {
+  from {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animatedText {
+  font-size: 10rem; /* Augmentez la taille du texte */
+  color: white; /* Changez la couleur en blanc */
+  text-align: center; /* Centre le texte horizontalement */
+  line-height: 1.2; /* Ajustez l'espacement entre les lignes pour bien diviser le texte sur deux lignes */
+  white-space: pre-line; /* Respecte les retours à la ligne dans la chaîne de texte */
+  opacity: 0; /* Commencez invisible pour l'animation */
+}
+
+.textAppear {
+  animation-name: textAppear;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+/* Style pour désactiver le scroll */
+.bodyNoScroll {
+  overflow: hidden;
+}
+
+/* Assurez-vous que l'image de fond s'ajuste correctement sur petits écrans */
+.parallaxLayer {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .parallaxSection {
+    height: 80vh; /* Ajuster la hauteur pour les petits écrans */
+  }
+
+  .parallaxLayer {
+    background-size: contain; /* Ajuste l'image pour qu'elle soit contenue dans la section sans dépasser */
+  }
+
+  .animatedText {
+    font-size: 2rem; /* Réduire la taille du texte sur les petits écrans */
+  }
+}
+
+@media (max-width: 480px) {
+  .parallaxSection {
+    height: 60vh; /* Ajuster la hauteur pour les très petits écrans */
+  }
+
+  .animatedText {
+    font-size: 1.5rem; /* Réduire davantage la taille du texte sur les très petits écrans */
+  }
 }

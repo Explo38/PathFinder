@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './skill.module.css';
+import { useLanguage } from '../../context/LanguageContext';
 
 // Définition de vos interfaces
 interface PerformanceData {
@@ -72,7 +73,6 @@ const Skill: React.FC<SkillProps> = ({ name, level }) => {
     ? `${Math.floor(level / 60)}min ${level % 60}sec`
     : level.toString();
 
-
   return (
     <div className={styles.skill} ref={ref}>
       <div className={styles.skillName}>{name}</div>
@@ -118,6 +118,7 @@ const Skill: React.FC<SkillProps> = ({ name, level }) => {
 
 // Composant SkillsContainer qui récupère les données de l'API et les affiche en utilisant le composant Skill
 const SkillsContainer: React.FC = () => {
+  const { language } = useLanguage(); // Utiliser le contexte de langue
   const [performance, setPerformance] = useState<PerformanceData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -146,14 +147,16 @@ const SkillsContainer: React.FC = () => {
     return <div>Loading...</div>;
   }
 
+  const title = language === 'fr' ? 'Performances' : 'Performances';
+
   return (
     <div>
-      <h2 className={styles.skillsTitle}>Performances</h2>
+      <h2 className={styles.skillsTitle}>{title}</h2>
       <div className={styles.skillsContainer}>
         {performance && (
           <>
-            <Skill name="Temps de sortie" level={parseInt(performance.temps_sortie)} />
-            <Skill name="Nombre de mouvements" level={parseInt(performance.nb_mouvements)} />
+            <Skill name={language === 'fr' ? 'Temps de sortie' : 'Exit Time'} level={parseInt(performance.temps_sortie)} />
+            <Skill name={language === 'fr' ? 'Nombre de mouvements' : 'Number of Moves'} level={parseInt(performance.nb_mouvements)} />
           </>
         )}
       </div>

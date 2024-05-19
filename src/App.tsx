@@ -1,4 +1,5 @@
 // src/App.tsx
+import React from 'react';
 import Header from './components/Header/Header';
 import TextAccueil from './components/textAccueil/textAcceuil';
 import Parallax from './components/Parallax/Parallax';
@@ -9,25 +10,23 @@ import CardsRobot from './components/cardsRobot/cardsRobot';
 import CardsLabyrinthe from './components/cardsLabyrinthe/cardsLabyrinthe';
 import CarouseHorizontal from './components/carouselHorizontal/carouselHorizontal';
 import { SkillsContainer } from './components/skill/Skills';
-import './App.css'; // Importez le style global
-
+import { LanguageProvider } from './context/LanguageContext';
+import './App.css';
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <Header />
       <TextAccueil />
       <Parallax />
-      < Textanim />
-      < CardsRobot />
-      < Textanim2 />
-      < CardsLabyrinthe />
-      < Labyrinthe />
-      < SkillsContainer />
-      < CarouseHorizontal />
-      
-      {/* Le reste de votre application */}
-    </>
+      <Textanim />
+      <CardsRobot />
+      <Textanim2 />
+      <CardsLabyrinthe />
+      <Labyrinthe />
+      <SkillsContainer />
+      <CarouseHorizontal />
+    </LanguageProvider>
   );
 }
 

@@ -1,20 +1,25 @@
-// Popup.tsx
+// src/components/cardsRobot/Popup.tsx
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Overlay, PopupContainer, CloseButton, InstructionText } from './Popup.styles';
+import { useLanguage } from '../../context/LanguageContext'; // Importer le contexte de langue
 
 type PopupProps = {
   isVisible: boolean;
   onClose: () => void;
 };
 
-
-
 const Popup: React.FC<PopupProps> = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
   const mountRef = useRef<HTMLDivElement | null>(null);
+  const { language } = useLanguage(); // Utiliser le contexte de langue
+
+  const instructionTexts: { [key: string]: string } = {
+    fr: "Utilisez le clic gauche ainsi que la molette de défilement pour zoomer et explorer la vue 3D.",
+    en: "Use the left click and the scroll wheel to zoom and explore the 3D view."
+  };
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -22,8 +27,7 @@ const Popup: React.FC<PopupProps> = ({ isVisible, onClose }) => {
     // Scène, caméra, et renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(30, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
-    camera.position.set (30, 25, 50); // La position initiale de la caméra
-
+    camera.position.set(30, 25, 50); // La position initiale de la caméra
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
@@ -77,18 +81,12 @@ const Popup: React.FC<PopupProps> = ({ isVisible, onClose }) => {
     };
   }, []);
 
-  // Appelle la fonction onClose passée en prop lors du clic sur le bouton
-  const handleButtonClick = () => {
-    onClose();
-  };
-
   return (
     <Overlay>
       <PopupContainer>
-        {/* Lors du clic, la fonction onClose est appelée directement */}
-         <CloseButton onClick={handleButtonClick}>×</CloseButton>
+        <CloseButton onClick={onClose}>×</CloseButton>
         <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
-        <InstructionText>Utilisez clique gauche ainsi que la molette de défilement pour zoomer et explorer la vue 3D.</InstructionText>
+        <InstructionText>{instructionTexts[language]}</InstructionText>
       </PopupContainer>
     </Overlay>
   );

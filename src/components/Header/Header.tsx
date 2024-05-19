@@ -1,29 +1,30 @@
 // src/components/Header/Header.tsx
-import React, { useState, useEffect } from 'react';
-import styles from './Header.module.css'; // Importez votre module CSS ici
-import logoPath from './asset/PathFinder.png'; // Assurez-vous que le chemin est correct
+import React, { useContext, useEffect, useState } from 'react';
+import styles from './Header.module.css';
+import SwitchButton from './SwitchButton';
+import logoPath from './asset/PathFinder.png';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Header: React.FC = () => {
+  const { language, setLanguage } = useLanguage();
   const [isAnimated, setIsAnimated] = useState(false);
 
   useEffect(() => {
-    // Désactiver le scroll
     document.body.classList.add(styles.bodyNoScroll);
-
-    // Démarrer l'animation après un délai
     const timer = setTimeout(() => {
       setIsAnimated(true);
-
-      // Réactiver le scroll
       document.body.classList.remove(styles.bodyNoScroll);
-    }, 2000); // La durée correspond à la durée de votre animation CSS
+    }, 2000);
 
-    // Nettoyer l'effet en cas de démontage du composant
     return () => {
       clearTimeout(timer);
       document.body.classList.remove(styles.bodyNoScroll);
     };
   }, []);
+
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang);
+  };
 
   return (
     <header className={styles.header}>
@@ -33,14 +34,17 @@ const Header: React.FC = () => {
         </a>
         <span className={`${styles.logo} ${isAnimated ? styles.animatedText : ''}`}>
           PathFinder
-        </span> {/* Texte en dehors du lien */}
+        </span>
       </div>
       <ul className={styles.navList}>
-        <li className={styles.navItem}><a href="#" className={`${styles.navLink} ${styles.active}`}>Home</a></li>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>About</a></li>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>Work</a></li>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>Contact</a></li>
+        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Menu' : 'Home'}</a></li>
+        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Mini jeux' : 'Mini Games'}</a></li>
+        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Qui sommes-nous ?' : 'About Us'}</a></li>
+        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Contact' : 'Contact'}</a></li>
       </ul>
+      <div className={styles.switchContainer}>
+        <SwitchButton onLanguageChange={handleLanguageChange} />
+      </div>
     </header>
   );
 };

@@ -1,0 +1,80 @@
+.switchButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0px;
+    box-sizing: border-box;
+    position: relative;
+    background: linear-gradient(to right, #6758ab, #766bba); /* Ajout du dégradé */
+  }
+  
+  .switchCircle {
+    width: 50px;
+    height: 50px;
+    background-color: #9279bb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    transition: transform 0.3s ease;
+  }
+  
+  .switchFrench {
+    transform: translateX(0);
+  }
+  
+  .switchEnglish {
+    transform: translateX(68px);
+  }
+  
+  .switchText {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .switchText span {
+    width: 50%;
+    text-align: center;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .switchText .active {
+    color: black;
+  }
+  
+  .switchText .inactive {
+    color: gray;
+  }
+  
+  .switchButton .switchCircle {
+    z-index: 2;
+  }
+  
+  .switchButton .switchCircle::before {
+    content: attr(data-lang);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .switchButton .switchFrench::before {
+    content: 'FR';
+  }
+  
+  .switchButton .switchEnglish::before {
+    content: 'EN';
+  }
+  
