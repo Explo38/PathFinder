@@ -1,5 +1,5 @@
-// src/App.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import TextAccueil from './components/textAccueil/textAcceuil';
 import Parallax from './components/Parallax/Parallax';
@@ -12,20 +12,41 @@ import CarouseHorizontal from './components/carouselHorizontal/carouselHorizonta
 import { SkillsContainer } from './components/skill/Skills';
 import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
+import MiniJeux from './components/MiniJeux/MiniJeux';
+
+// Composant pour forcer la redirection à la page d'accueil
+const RedirectToHome: React.FC = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/');
+  }, [navigate]);
+  return null;
+};
 
 function App() {
   return (
     <LanguageProvider>
-      <Header />
-      <TextAccueil />
-      <Parallax />
-      <Textanim />
-      <CardsRobot />
-      <Textanim2 />
-      <CardsLabyrinthe />
-      <Labyrinthe />
-      <SkillsContainer />
-      <CarouseHorizontal />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <TextAccueil />
+              <Parallax />
+              <Textanim />
+              <CardsRobot />
+              <Textanim2 />
+              <CardsLabyrinthe />
+              <Labyrinthe />
+              <SkillsContainer />
+              <CarouseHorizontal />
+            </>
+          } />
+          <Route path="/mini-jeux" element={<MiniJeux />} />
+          {/* Ajoutez d'autres routes ici si nécessaire */}
+          <Route path="*" element={<RedirectToHome />} />
+        </Routes>
+      </Router>
     </LanguageProvider>
   );
 }

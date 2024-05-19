@@ -1,5 +1,6 @@
 // src/components/Header/Header.tsx
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 import SwitchButton from './SwitchButton';
 import logoPath from './asset/PathFinder.png';
@@ -8,6 +9,7 @@ import { useLanguage } from '../../context/LanguageContext';
 const Header: React.FC = () => {
   const { language, setLanguage } = useLanguage();
   const [isAnimated, setIsAnimated] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     document.body.classList.add(styles.bodyNoScroll);
@@ -26,21 +28,51 @@ const Header: React.FC = () => {
     setLanguage(lang);
   };
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <a href="#" className={styles.logoLink}>
+        <Link to="/" className={styles.logoLink}>
           <img src={logoPath} alt="Logo" className={styles.logoImg} />
-        </a>
+        </Link>
         <span className={`${styles.logo} ${isAnimated ? styles.animatedText : ''}`}>
           PathFinder
         </span>
       </div>
       <ul className={styles.navList}>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Menu' : 'Home'}</a></li>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Mini jeux' : 'Mini Games'}</a></li>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Qui sommes-nous ?' : 'About Us'}</a></li>
-        <li className={styles.navItem}><a href="#" className={styles.navLink}>{language === 'fr' ? 'Contact' : 'Contact'}</a></li>
+        <li className={styles.navItem}>
+          <Link
+            to="/"
+            className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
+          >
+            {language === 'fr' ? 'Menu' : 'Home'}
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link
+            to="/mini-jeux"
+            className={`${styles.navLink} ${isActive('/mini-jeux') ? styles.active : ''}`}
+          >
+            {language === 'fr' ? 'Mini jeux' : 'Mini Games'}
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link
+            to="/about"
+            className={`${styles.navLink} ${isActive('/about') ? styles.active : ''}`}
+          >
+            {language === 'fr' ? 'Qui sommes-nous ?' : 'About Us'}
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link
+            to="/contact"
+            className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
+          >
+            {language === 'fr' ? 'Contact' : 'Contact'}
+          </Link>
+        </li>
       </ul>
       <div className={styles.switchContainer}>
         <SwitchButton onLanguageChange={handleLanguageChange} />
