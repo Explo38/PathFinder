@@ -60,8 +60,8 @@ body, html {
   }
   
   .playerIcon {
-    width: 45px; /* Ajustez la largeur de l'image du joueur ici */
-    height: 45px; /* Ajustez la hauteur de l'image du joueur ici */
+    width: 50px; /* Ajustez la largeur de l'image du joueur ici */
+    height: 50px; /* Ajustez la hauteur de l'image du joueur ici */
   }
 
   .machineIcon {

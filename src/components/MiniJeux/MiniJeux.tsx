@@ -64,11 +64,11 @@ const MiniJeux: React.FC = () => {
 
   // Définir les niveaux maximum en fonction de la taille de l'écran
   const getMaxLevel = () => {
-    if (window.innerWidth <= 480) return 5;
-    if (window.innerWidth <= 768) return 8;
-    if (window.innerWidth <= 1024) return 10;
-    if (window.innerWidth <= 1440) return 13;
-    return 18;
+    if (window.innerWidth <= 480) return 4;
+    if (window.innerWidth <= 768) return 6;
+    if (window.innerWidth <= 1024) return 8;
+    if (window.innerWidth <= 1440) return 10;
+    return 15;
   };
 
   const movePlayer = (rowDelta: number, colDelta: number) => {

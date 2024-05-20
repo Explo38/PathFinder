@@ -73,7 +73,7 @@
 
 @media (max-width: 768px) {
   .parallaxSection {
-    height: 80vh; /* Ajuster la hauteur pour les petits écrans */
+    height: 30vh; /* Ajuster la hauteur pour les petits écrans */
   }
 
   .parallaxLayer {
@@ -85,7 +85,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .parallaxSection {
     height: 60vh; /* Ajuster la hauteur pour les très petits écrans */
   }
@@ -93,4 +93,9 @@
   .animatedText {
     font-size: 1.5rem; /* Réduire davantage la taille du texte sur les très petits écrans */
   }
+
+  .animatedText {
+    font-size: 0; /* Augmentez la taille du texte */
+  }
+  
 }

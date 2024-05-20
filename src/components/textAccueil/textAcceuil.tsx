@@ -1,4 +1,3 @@
-// src/components/TextAccueil/textAccueil.tsx
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import styles from './textAccueil.module.css';
@@ -11,6 +10,8 @@ const TextAccueil: React.FC = () => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScroll(true);
+      } else {
+        setScroll(false);
       }
     };
 
@@ -26,14 +27,14 @@ const TextAccueil: React.FC = () => {
   // Définir le spring pour animer le texte
   const props = useSpring({
     to: scroll
-      ? { opacity: 1, transform: 'translate(0%, 0%)', fontSize: '1em' }
-      : { opacity: 0, transform: 'translate(-50%, -50%)', fontSize: '4em' },
-    from: { opacity: 0, transform: 'translate(-50%, -50%)', fontSize: '4em' },
+      ? { opacity: 1, transform: 'translate(-50%, -50%)', fontSize: '1em', top: '20px', left: '20px' }
+      : { opacity: 1, transform: 'translate(-50%, -50%)', fontSize: '4em', top: '50%', left: '50%' },
+    from: { opacity: 0, transform: 'translate(-50%, -50%)', fontSize: '4em', top: '50%', left: '50%' },
   });
 
   return (
     <animated.div style={props} className={styles.text}>
-      Pathfinder
+     
     </animated.div>
   );
 };
