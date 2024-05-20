@@ -62,14 +62,14 @@ const MiniJeux = () => {
     // Définir les niveaux maximum en fonction de la taille de l'écran
     const getMaxLevel = () => {
         if (window.innerWidth <= 480)
-            return 5;
+            return 3;
         if (window.innerWidth <= 768)
-            return 10;
+            return 5;
         if (window.innerWidth <= 1024)
-            return 15;
+            return 8;
         if (window.innerWidth <= 1440)
-            return 20;
-        return 26;
+            return 15;
+        return 18;
     };
     const movePlayer = (rowDelta, colDelta) => {
         setMaze((prevMaze) => {
