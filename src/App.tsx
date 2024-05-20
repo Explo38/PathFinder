@@ -14,6 +14,29 @@ import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 import MiniJeux from './components/MiniJeux/MiniJeux';
 
+// Function to add GTM script to the document
+const addGTMScript = () => {
+  const script = document.createElement('script');
+  script.innerHTML = `
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M6PWC7T6');
+  `;
+  document.head.appendChild(script);
+};
+
+// Function to add GTM noscript tag to the document
+const addGTMNoScript = () => {
+  const noscript = document.createElement('noscript');
+  noscript.innerHTML = `
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6PWC7T6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  `;
+  document.body.appendChild(noscript);
+};
+
 // Composant pour forcer la redirection à la page d'accueil
 const RedirectToHome: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +46,12 @@ const RedirectToHome: React.FC = () => {
   return null;
 };
 
-function App() {
+const App: React.FC = () => {
+  useEffect(() => {
+    addGTMScript();
+    addGTMNoScript();
+  }, []);
+
   return (
     <LanguageProvider>
       <Router>
@@ -49,6 +77,6 @@ function App() {
       </Router>
     </LanguageProvider>
   );
-}
+};
 
 export default App;
