@@ -67,8 +67,8 @@ const MiniJeux: React.FC = () => {
     if (window.innerWidth <= 480) return 5;
     if (window.innerWidth <= 768) return 8;
     if (window.innerWidth <= 1024) return 10;
-    if (window.innerWidth <= 1440) return 15;
-    return 20;
+    if (window.innerWidth <= 1440) return 13;
+    return 18;
   };
 
   const movePlayer = (rowDelta: number, colDelta: number) => {
