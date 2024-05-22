@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",  // Répertoire de sortie pour les fichiers compilés
+    "rootDir": "./src",  // Répertoire source
     /* Basic Options */
     "target": "ESNext",
     "module": "ESNext",

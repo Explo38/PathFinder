@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import TextAccueil from './components/textAccueil/textAcceuil';
@@ -14,47 +15,17 @@ import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 import MiniJeux from './components/MiniJeux/MiniJeux';
 import AnalyticsListener from './AnalyticsListener';
-
 // Composant pour forcer la redirection à la page d'accueil
-const RedirectToHome: React.FC = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate('/');
-  }, [navigate]);
-  return null;
+const RedirectToHome = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        navigate('/');
+    }, [navigate]);
+    return null;
 };
-
-const App: React.FC = () => {
-  useEffect(() => {
-
-  }, []);
-
-  return (
-    <LanguageProvider>
-      <Router>
-        <AnalyticsListener />
-        <Header />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <TextAccueil />
-              <Parallax />
-              <Textanim />
-              <CardsRobot />
-              <Textanim2 />
-              <CardsLabyrinthe />
-              <Labyrinthe />
-              <SkillsContainer />
-              <CarouseHorizontal />
-            </>
-          } />
-          <Route path="/mini-jeux" element={<MiniJeux />} />
-          {/* Ajoutez d'autres routes ici si nécessaire */}
-          <Route path="*" element={<RedirectToHome />} />
-        </Routes>
-      </Router>
-    </LanguageProvider>
-  );
+const App = () => {
+    useEffect(() => {
+    }, []);
+    return (_jsx(LanguageProvider, { children: _jsxs(Router, { children: [_jsx(AnalyticsListener, {}), _jsx(Header, {}), _jsxs(Routes, { children: [_jsx(Route, { path: "/", element: _jsxs(_Fragment, { children: [_jsx(TextAccueil, {}), _jsx(Parallax, {}), _jsx(Textanim, {}), _jsx(CardsRobot, {}), _jsx(Textanim2, {}), _jsx(CardsLabyrinthe, {}), _jsx(Labyrinthe, {}), _jsx(SkillsContainer, {}), _jsx(CarouseHorizontal, {})] }) }), _jsx(Route, { path: "/mini-jeux", element: _jsx(MiniJeux, {}) }), _jsx(Route, { path: "*", element: _jsx(RedirectToHome, {}) })] })] }) }));
 };
-
 export default App;
