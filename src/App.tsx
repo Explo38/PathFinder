@@ -13,7 +13,6 @@ import { SkillsContainer } from './components/skill/Skills';
 import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 import MiniJeux from './components/MiniJeux/MiniJeux';
-import AnalyticsListener from './AnalyticsListener';
 
 // Composant pour forcer la redirection à la page d'accueil
 const RedirectToHome: React.FC = () => {
