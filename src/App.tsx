@@ -26,7 +26,6 @@ const RedirectToHome: React.FC = () => {
 
 const App: React.FC = () => {
   useEffect(() => {
-
   }, []);
 
   return (
