@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import TextAccueil from './components/textAccueil/textAcceuil';
 import Parallax from './components/Parallax/Parallax';
@@ -13,10 +13,7 @@ import { SkillsContainer } from './components/skill/Skills';
 import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 import MiniJeux from './components/MiniJeux/MiniJeux';
-import ReactGA from "react-ga4";
-
-const TRACKING_ID = "G-HG7RMKC4WD";
-ReactGA.initialize(TRACKING_ID);
+import AnalyticsListener from './AnalyticsListener';
 
 // Composant pour forcer la redirection à la page d'accueil
 const RedirectToHome: React.FC = () => {
@@ -28,15 +25,14 @@ const RedirectToHome: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const location = useLocation();
-
   useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
-  }, [location]);
+
+  }, []);
 
   return (
     <LanguageProvider>
       <Router>
+        <AnalyticsListener />
         <Header />
         <Routes>
           <Route path="/" element={
