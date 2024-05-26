@@ -9,6 +9,7 @@ const Header: React.FC = () => {
   const { language, setLanguage } = useLanguage();
   const [isAnimated, setIsAnimated] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,6 +25,18 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
   };
@@ -34,8 +47,12 @@ const Header: React.FC = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const handlePlaceholderClick = () => {
+    alert(language === 'fr' ? 'Page non disponible' : 'Page not available');
+  };
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.logoContainer}>
         <Link to="/" className={styles.logoLink}>
           <img src={logoPath} alt="Logo" className={styles.logoImg} />
