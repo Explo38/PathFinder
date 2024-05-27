@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 import SwitchButton from './SwitchButton';
 import logoPath from './asset/PathFinder.png';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   const { language, setLanguage } = useLanguage();
   const [isAnimated, setIsAnimated] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,12 +48,15 @@ const Header: React.FC = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    setMenuOpen(false);
+  };
+
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
-      <div className={styles.logoContainer}>
-        <Link to="/" className={styles.logoLink}>
-          <img src={logoPath} alt="Logo" className={styles.logoImg} />
-        </Link>
+      <div className={styles.logoContainer} onClick={() => handleNavigation('/')}>
+        <img src={logoPath} alt="Logo" className={styles.logoImg} />
         <span className={`${styles.logo} ${isAnimated ? styles.animatedText : ''}`}>
           PathFinder
         </span>
@@ -65,40 +69,28 @@ const Header: React.FC = () => {
       <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`}>
         <ul className={`${styles.navList} ${menuOpen ? styles.open : ''}`}>
           <li className={styles.navItem}>
-            <Link
-              to="/"
+            <div
               className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
-              onClick={toggleMenu}
+              onClick={() => handleNavigation('/')}
             >
               {language === 'fr' ? 'Menu' : 'Home'}
-            </Link>
+            </div>
           </li>
           <li className={styles.navItem}>
-            <Link
-              to="/mini-jeux"
+            <div
               className={`${styles.navLink} ${isActive('/mini-jeux') ? styles.active : ''}`}
-              onClick={toggleMenu}
+              onClick={() => handleNavigation('/mini-jeux')}
             >
               {language === 'fr' ? 'Mini jeux' : 'Mini Games'}
-            </Link>
+            </div>
           </li>
           <li className={styles.navItem}>
-            <Link
-              to="/about"
-              className={`${styles.navLink} ${isActive('/about') ? styles.active : ''}`}
-              onClick={toggleMenu}
-            >
-              {language === 'fr' ? 'Qui sommes-nous ?' : 'About Us'}
-            </Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link
-              to="/contact"
+            <div
               className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
-              onClick={toggleMenu}
+              onClick={() => handleNavigation('/contact')}
             >
               {language === 'fr' ? 'Contact' : 'Contact'}
-            </Link>
+            </div>
           </li>
           <li className={styles.navItem}>
             <div className={styles.switchContainer}>

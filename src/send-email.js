@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
             Name: `${name} ${surname}`,
           },
         ],
-        TemplateID: 5989492, // Remplacez par l'ID de votre modèle
+        TemplateID: 5989492, 
         TemplateLanguage: true,
         Subject: 'Confirmation de demande',
         Variables: {

@@ -23,21 +23,17 @@ const App: React.FC = () => {
         <AnalyticsListener />
         <Header />
         <Routes>
-          <Route 
-            path="/" 
-            element={
-              <>
-                <TextAccueil />
-                <Parallax />
-                <Textanim />
-                <CardsRobot />
-                <Textanim2 />
-                <CardsLabyrinthe />
-                <Labyrinthe />
-                <SkillsContainer />
-                <CarouseHorizontal />
-              </>
-            } 
+          <Route path="/" element={<>
+              <TextAccueil />
+              <Parallax />
+              <Textanim />
+              <CardsRobot />
+              <Textanim2 />
+              <CardsLabyrinthe />
+              <Labyrinthe />
+              <SkillsContainer />
+              <CarouseHorizontal />
+            </>} 
           />
           <Route path="/mini-jeux" element={<MiniJeux />} />
           <Route path="/contact" element={<Contact />} />
