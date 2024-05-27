@@ -7,6 +7,19 @@ import { LanguageProvider } from './context/LanguageContext';
 import './index.css';
 ReactDOM.render(_jsx(React.StrictMode, { children: _jsx(Router, { basename: "/PathFinder", children: _jsx(LanguageProvider, { children: _jsx(App, {}) }) }) }), document.getElementById('root'));
 
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Router basename="/PathFinder">
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');

@@ -47,10 +47,6 @@ const Header: React.FC = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handlePlaceholderClick = () => {
-    alert(language === 'fr' ? 'Page non disponible' : 'Page not available');
-  };
-
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.logoContainer}>

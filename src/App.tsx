@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import TextAccueil from './components/textAccueil/textAcceuil';
 import Parallax from './components/Parallax/Parallax';
@@ -41,7 +41,6 @@ const App: React.FC = () => {
           />
           <Route path="/mini-jeux" element={<MiniJeux />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </LanguageProvider>
