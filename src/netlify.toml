@@ -1,11 +1,15 @@
+# Redirections
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  
+
+# Configuration de la build
 [build]
   command = "npm run build"
-  publish = "build"
+  publish = "dist"
+  functions = "./functions"
 
+# Spécification de la version de Node.js
 [context.production.environment]
   NODE_VERSION = "18.20.3"
