@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [isPrivacyPopupOpen, setIsPrivacyPopupOpen] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name && surname && email && message.length >= 10) {
       try {
@@ -33,7 +33,11 @@ const Contact: React.FC = () => {
           setSuccessMessage('Erreur lors de l\'envoi du message.');
         }
       } catch (error) {
-        setSuccessMessage('Erreur lors de l\'envoi du message.');
+        if (error instanceof Error) {
+          setSuccessMessage(`Erreur lors de l'envoi du message: ${error.message}`);
+        } else {
+          setSuccessMessage('Erreur lors de l\'envoi du message.');
+        }
       }
     } else {
       setSuccessMessage('Veuillez remplir tous les champs et entrer au moins 10 caractères dans la demande.');
@@ -50,7 +54,7 @@ const Contact: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} name="contact">
         <div className={styles['form-group']}>
           <label className={styles.label} htmlFor="name">Prénom</label>
           <input

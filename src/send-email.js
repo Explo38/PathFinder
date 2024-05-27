@@ -1,10 +1,4 @@
-const mailjet = require('node-mailjet');
-require('dotenv').config();
-
-const mailjetClient = mailjet.connect(
-  process.env.MAILJET_API_KEY,
-  process.env.MAILJET_SECRET_KEY
-);
+const mailjet = require('node-mailjet').connect(process.env.MAILJET_API_KEY, process.env.MAILJET_SECRET_KEY);
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
@@ -16,7 +10,7 @@ exports.handler = async (event, context) => {
 
   const { name, surname, email, message } = JSON.parse(event.body);
 
-  const userEmailRequest = mailjetClient.post('send', { version: 'v3.1' }).request({
+  const userEmailRequest = mailjet.post('send', { version: 'v3.1' }).request({
     Messages: [
       {
         From: {
@@ -29,7 +23,7 @@ exports.handler = async (event, context) => {
             Name: `${name} ${surname}`,
           },
         ],
-        TemplateID: 5989492, 
+        TemplateID: 5989492, // Assurez-vous que le TemplateID est correct et existe dans Mailjet
         TemplateLanguage: true,
         Subject: 'Confirmation de demande',
         Variables: {
@@ -42,7 +36,7 @@ exports.handler = async (event, context) => {
     ],
   });
 
-  const adminEmailRequest = mailjetClient.post('send', { version: 'v3.1' }).request({
+  const adminEmailRequest = mailjet.post('send', { version: 'v3.1' }).request({
     Messages: [
       {
         From: {
