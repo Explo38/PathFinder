@@ -1,6 +1,8 @@
 const mailjet = require('node-mailjet').connect(process.env.MAILJET_API_KEY, process.env.MAILJET_SECRET_KEY);
 
 exports.handler = async (event, context) => {
+  console.log('Received event:', event);
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -9,6 +11,8 @@ exports.handler = async (event, context) => {
   }
 
   const { name, surname, email, message } = JSON.parse(event.body);
+
+  console.log('Parsed body:', { name, surname, email, message });
 
   const userEmailRequest = mailjet.post('send', { version: 'v3.1' }).request({
     Messages: [
@@ -45,7 +49,7 @@ exports.handler = async (event, context) => {
         },
         To: [
           {
-            Email: 'pathfinder.contact.nwesletter@gmail.com',
+            Email: 'contact-pathfinder-newlester@gmail.com',
             Name: 'Admin',
           },
         ],
@@ -56,12 +60,15 @@ exports.handler = async (event, context) => {
   });
 
   try {
-    await Promise.all([userEmailRequest, adminEmailRequest]);
+    const [userEmailResponse, adminEmailResponse] = await Promise.all([userEmailRequest, adminEmailRequest]);
+    console.log('User email response:', userEmailResponse.body);
+    console.log('Admin email response:', adminEmailResponse.body);
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Emails sent successfully' }),
     };
   } catch (err) {
+    console.error('Error sending email:', err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Error sending email' }),
