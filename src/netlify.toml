@@ -2,6 +2,10 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
+  
 [build]
-  functions = "./functions"
+  command = "npm run build"
+  publish = "build"
+
+[context.production.environment]
+  NODE_VERSION = "18.20.3"
