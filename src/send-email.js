@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
         },
         To: [
           {
-            Email: 'contact-pathfinder-newlester@gmail.com',
+            Email: 'pathfinder.contact.nwesletter@gmail.com',
             Name: 'Admin',
           },
         ],
