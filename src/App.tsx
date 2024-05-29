@@ -14,6 +14,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import MiniJeux from './components/MiniJeux/MiniJeux';
 import AnalyticsListener from './AnalyticsListener';
 import Contact from './components/Contact/Contact';
+import ImgDamier from './components/ImgDamier/ImgDamier';
 import './App.css';
 
 const App: React.FC = () => {
@@ -33,6 +34,7 @@ const App: React.FC = () => {
               <Labyrinthe />
               <SkillsContainer />
               <CarouseHorizontal />
+              <ImgDamier />
             </>} 
           />
           <Route path="/mini-jeux" element={<MiniJeux />} />

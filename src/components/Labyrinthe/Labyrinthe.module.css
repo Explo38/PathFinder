@@ -5,8 +5,8 @@
   font-weight: bold;
   font-size: 2em; /* Ajustez selon la taille que vous souhaitez */
   color: #FFF; /* La couleur du texte, adaptez-la à votre thème si nécessaire */
-  margin-bottom: -180px; /* Ajoutez de l'espace en dessous du titre si nécessaire */
-  margin-top: 300px;
+  margin-bottom: -50px; /* Ajoutez de l'espace en dessous du titre si nécessaire */
+  margin-top: 450px;
 }
 
 .mazeContainer {
@@ -58,7 +58,6 @@
   background-color: red;
 }
 
-/* Labyrinthe.module.css */
 .visitedOnce {
   animation: pulse 1s infinite;
   background-color: yellow;
@@ -70,18 +69,6 @@
   animation: pulse 1s infinite;
 }
 
-
-/* Labyrinthe.module.css */
-
-.visitedOnce {
-  background-color: yellow; /* ou toute autre couleur que vous souhaitez utiliser pour marquer la case visitée */
-}
-
-.visitedMultiple {
-  position: relative; /* Important pour positionner correctement le compteur */
-}
-
-
 .pathActive {
   animation: highlightPath 1s forwards; /* L'animation ne se joue qu'une seule fois quand on arrive sur la case */
 }
@@ -90,3 +77,4 @@
   from { background-color: lightgrey; }
   to { background-color: yellow; } /* Changez la couleur finale selon vos préférences */
 }
+
