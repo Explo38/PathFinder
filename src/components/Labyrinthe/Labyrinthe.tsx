@@ -27,7 +27,7 @@ const Labyrinthe = () => {
   useEffect(() => {
     const fetchPath = async () => {
       try {
-        const response = await axios.get('https://yohann.alwaysdata.net/GetParcours/2');
+        const response = await axios.get('https://yohann.alwaysdata.net/GetParcours/1');
         const pathData: Coordinate[] = JSON.parse(response.data.Parcours);
         setPath(pathData);
       } catch (error) {
