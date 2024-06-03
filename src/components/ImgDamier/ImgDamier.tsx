@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ImgDamier.module.css';
 
 const images = [
-  { src: 'path_to_image1', text: '' },
-  { src: 'path_to_image2', text: 'gbrebgregh trtrthtrhrhtrhqahr hrtqhgrqregregreghrt hjsqereqh rtbyeqgbqbeqebqyq' },
-  { src: 'path_to_image3', text: '' },
-  { src: 'path_to_image4', text: '' },
-  { src: 'path_to_image5', text: 'gbrebgregh trtrthtrhrhtrhqahr hrtqhgrqregregreghrt hjsqereqh rtbyeqgbqbeqebqyq' },
-  { src: 'path_to_image6', text: '' },
-  { src: 'path_to_image7', text: '' },
-  { src: 'path_to_image8', text: '' },
+  { id: 1, src: 'robot_image_url', text: '' },
+  { id: 2, src: 'robot_image_url', text: '' },
+  { id: 3, src: 'robot_image_url', text: '' },
+  { id: 4, src: 'robot_image_url', text: '' },
+  { id: 5, src: 'robot_image_url', text: 'gbrbgrgreh trtrthrhhrhtraqr hrtahgrregreghrehrt hjsegregah rtbyeqbqbeqbeqbyq' },
+  { id: 6, src: 'robot_image_url', text: '' },
+  { id: 7, src: 'robot_image_url', text: '' },
+  { id: 8, src: 'robot_image_url', text: '' },
+  { id: 9, src: 'robot_image_url', text: 'gbrbgrgreh trtrthrhhrhtraqr hrtahgrregreghrehrt hjsegregah rtbyeqbqbeqbeqbyq' },
 ];
 
-const ImgDamier = () => {
+const ImgDamier: React.FC = () => {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  const handleClick = (id: number) => {
+    setSelectedId(id);
+  };
+
   return (
     <div className={styles.grid}>
-      {images.map((item, index) => (
-        <div key={index} className={`${styles.gridItem} ${styles[`item-${index}`]}`}>
-          <img src={item.src} alt={`robot-${index}`} className={styles.image} />
-          {item.text && <p className={styles.text}>{item.text}</p>}
+      {images.map((image) => (
+        <div
+          key={image.id}
+          className={`${styles.card} ${selectedId === image.id ? styles.selected : ''}`}
+          onClick={() => handleClick(image.id)}
+        >
+          <img src={image.src} alt={`Robot ${image.id}`} className={styles.image} />
+          {image.text && <p className={styles.text}>{image.text}</p>}
         </div>
       ))}
     </div>

@@ -1,39 +1,33 @@
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .gridItem {
-    background: linear-gradient(135deg, #8a3ab9, #bc2a8d, #e95950, #fccc63);
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .image {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  
-  .text {
-    margin-top: 10px;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .item-0 { grid-column: 1 / 2; grid-row: 1 / 2; }
-  .item-1 { grid-column: 2 / 4; grid-row: 1 / 2; }
-  .item-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
-  .item-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
-  .item-4 { grid-column: 3 / 4; grid-row: 2 / 3; }
-  .item-5 { grid-column: 1 / 2; grid-row: 3 / 4; }
-  .item-6 { grid-column: 2 / 3; grid-row: 3 / 4; }
-  .item-7 { grid-column: 3 / 4; grid-row: 3 / 4; }
-  
+  margin-top: 450px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: linear-gradient(145deg, #8438df, #f64b97);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.text {
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.selected {
+  border: 2px solid blue;
+}
