@@ -16,31 +16,50 @@ const Contact: React.FC = () => {
     if (name && surname && email && message.length >= 10) {
       const templateParams = {
         from_name: `${name} ${surname}`,
-        to_name: 'Admin', // Vous pouvez également capturer le nom de l'utilisateur ici
+        to_name: 'Admin',
         message: message,
-        email: email,
+        reply_to: email, // Assurez-vous d'inclure `reply_to` ici
       };
 
+      // Envoyer l'email à l'administrateur
       emailjs
         .send(
-          '469363931144-qoejf2v27cj', // Remplacez par votre service ID
+          '469363931144-qoejf2v27cj', // Remplacez par votre service ID 
           'template_l5syvks', // Remplacez par votre template ID
           templateParams,
           'D-_fdE5aiD-PjdL66' // Remplacez par votre user ID
         )
         .then(
           (response) => {
-            console.log('SUCCESS!', response.status, response.text);
-            setSuccessMessage('Votre demande a été prise en compte.');
-            setName('');
-            setSurname('');
-            setEmail('');
-            setMessage('');
-            setCharCount(0);
+            console.log('Admin email sent!', response.status, response.text);
+
+            // Envoyer l'email de confirmation à l'utilisateur
+            emailjs
+              .send(
+                '469363931144-qoejf2v27cj', // Remplacez par votre service ID 
+                'template_mj09l48', // Remplacez par votre template ID
+                templateParams,
+                'D-_fdE5aiD-PjdL66' // Remplacez par votre user ID
+              )
+              .then(
+                (userResponse) => {
+                  console.log('User email sent!', userResponse.status, userResponse.text);
+                  setSuccessMessage('Votre demande a été prise en compte. Vous recevrez un email de confirmation.');
+                  setName('');
+                  setSurname('');
+                  setEmail('');
+                  setMessage('');
+                  setCharCount(0);
+                },
+                (userError) => {
+                  console.log('Failed to send user email...', userError);
+                  setSuccessMessage("Votre demande a été prise en compte, mais une erreur s'est produite lors de l'envoi de l'email de confirmation.");
+                }
+              );
           },
-          (error) => {
-            console.log('FAILED...', error);
-            setSuccessMessage("Erreur lors de l'envoi du message.");
+          (adminError) => {
+            console.log('Failed to send admin email...', adminError);
+            setSuccessMessage("Erreur lors de l'envoi du message à l'administrateur.");
           }
         );
     } else {
