@@ -6,10 +6,9 @@
 }
 
 .child {
-  /* Retirez flex: 0 0 20%; pour éviter de forcer la carte à prendre une certaine taille basée sur le conteneur */
   flex-basis: auto; /* ou la largeur que vous préférez */
   margin: 0.2rem; /* Ajustez les marges pour un meilleur espacement */
-  display: flex;/* Continuez à utiliser flexbox si nécessaire */
+  display: flex; /* Continuez à utiliser flexbox si nécessaire */
   justify-content: center; /* Centrez les enfants horizontalement */
   align-items: center; /* Centrez les enfants verticalement */
 }
@@ -27,21 +26,18 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée */
   padding: 1rem; /* Espacement intérieur */
   text-align: center; /* Aligner le texte au centre */
-  width: 100px; /* Réduisez la largeur pour rendre les cartes plus étroites */
+  width: 500px; /* Réduisez la largeur pour rendre les cartes plus étroites */
   margin: auto;
-  margin-left: 5%;
-  /* Ajoutez un max-width si vous voulez que les cartes puissent rétrécir sur des écrans plus petits */
   max-width: 90%; /* Par exemple, cela permet aux cartes de s'adapter à des écrans plus petits */
 }
 
 /* Ajustez la taille des images pour qu'elles s'adaptent à la nouvelle taille de la carte */
-.child img {
+.card img {
   margin-bottom: 1rem; /* Espacement sous l'image */
   width: auto; /* Laissez l'image s'adapter en fonction de sa taille naturelle */
   max-width: 100%; /* Assurez-vous qu'elle ne dépasse pas la largeur de la carte */
   height: auto; /* Hauteur automatique pour conserver le ratio */
 }
-
 
 /* Vous devrez peut-être ajuster les points de repère du carrousel pour les aligner correctement */
 .slick-dots {

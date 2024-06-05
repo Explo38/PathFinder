@@ -5,9 +5,10 @@ import styles from './ImgDamier.module.css';
 import lab1 from './asset/lab.jpg';
 import lab2 from './asset/lab2.jpg';
 import lab3 from './asset/lab3.jpg';
-import robot1 from './asset/robot1.png';
+import robot1 from './asset/robotcomplet.png';
 import robot2 from './asset/robot2.png';
 import robot3 from './asset/robot3.png';
+import wideImage from './asset/robotcomplet.png'; // Importez l'image pour la grande case
 
 const images = [
   { id: 1, src: lab1, text: '' },
@@ -26,18 +27,23 @@ const ImgDamier: React.FC = () => {
   };
 
   return (
-    <div className={styles.grid}>
-      {images.map((image) => (
-        <div
-          key={image.id}
-          className={`${styles.card} ${selectedId === image.id ? styles.selected : ''}`}
-          onClick={() => handleClick(image.id)}
-        >
-          <img src={image.src} alt={`Image ${image.id}`} className={styles.image} />
-          {image.text && <p className={styles.text}>{image.text}</p>}
-        </div>
-      ))}
-    </div>
+    <>
+      <div className={styles.grid}>
+        {images.map((image) => (
+          <div
+            key={image.id}
+            className={`${styles.card} ${selectedId === image.id ? styles.selected : ''}`}
+            onClick={() => handleClick(image.id)}
+          >
+            <img src={image.src} alt={`Image ${image.id}`} className={styles.image} />
+            {image.text && <p className={styles.text}>{image.text}</p>}
+          </div>
+        ))}
+      </div>
+      <div className={styles.wideCard}>
+        <img src={wideImage} alt="Wide Image" className={styles.wideImage} />
+      </div>
+    </>
   );
 };
 

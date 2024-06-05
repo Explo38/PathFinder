@@ -39,17 +39,17 @@ const cards: Record<string, Card[]> = {
   en: [
     {
       title: 'Accelerometer + Gyroscope',
-      description: '1 accelerometer and gyroscope: These sensors measure linear accelerations and rotations, essential for navigation and robot stabilization.',
+      description: '1x accelerometer and gyroscope: These sensors measure linear accelerations and rotations, essential for navigation and robot stabilization.',
       icon: accelGyroImage,
     },
     {
       title: 'Color Sensor',
-      description: '1 color sensor: Used to detect surrounding colors, this sensor helps the robot identify and differentiate objects based on their color.',
+      description: '1x color sensor: Used to detect surrounding colors, this sensor helps the robot identify and differentiate objects based on their color.',
       icon: couleurImage,
     },
     {
       title: 'Ultrasonic Sensor',
-      description: '4 ultrasonic sensors: These sensors allow the robot to measure distances to surrounding objects, essential for obstacle avoidance and safe navigation.',
+      description: '4x ultrasonic sensors: These sensors allow the robot to measure distances to surrounding objects, essential for obstacle avoidance and safe navigation.',
       icon: ultrasonImage,
     },
   ]
@@ -61,20 +61,31 @@ const ScrollHorizontal: React.FC = () => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     swipeToSlide: true,
-    draggable: true
+    draggable: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.carouselContainer}>
       <Slider {...settings}>
         {cards[language].map((card, index) => (
-          <div key={index} className={styles.card}>
-            <h4>{card.title}</h4>
-            <img src={card.icon} alt={card.title} className={styles.icon} />
-            <p>{card.description}</p>
+          <div key={index} className={styles.child}>
+            <div className={styles.card}>
+              <h4>{card.title}</h4>
+              <img src={card.icon} alt={card.title} className={styles.icon} />
+              <p>{card.description}</p>
+            </div>
           </div>
         ))}
       </Slider>
