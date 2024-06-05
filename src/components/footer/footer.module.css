@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px; /* Ajouté pour ajouter une marge au-dessus du footer */
+  margin-top: 180px; /* Ajouté pour ajouter une marge au-dessus du footer */
   flex-wrap: wrap; /* Permet la réorganisation sur les petits écrans */
 }
 
