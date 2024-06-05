@@ -1,0 +1,72 @@
+.footer {
+  background: linear-gradient(145deg, #8438df, #f64b97);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px; /* Ajouté pour ajouter une marge au-dessus du footer */
+  flex-wrap: wrap; /* Permet la réorganisation sur les petits écrans */
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Ajouté pour espacer les éléments sur petits écrans */
+}
+
+.logo {
+  width: 100px; /* Augmenté pour rendre le logo plus grand */
+  height: auto;
+}
+
+.nav {
+  display: flex;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Permet la réorganisation sur les petits écrans */
+}
+
+.navItem {
+  color: white;
+  margin: 0 15px; /* Ajouté pour espacer les liens horizontalement */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navItem:hover {
+  color: #ccc;
+}
+
+/* Média queries pour les petits écrans */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navItem {
+    margin: 10px 0; /* Espacement vertical pour les petits écrans */
+  }
+
+  .logoContainer {
+    justify-content: center;
+    width: 100%;
+  }
+}

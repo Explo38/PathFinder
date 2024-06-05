@@ -4,7 +4,12 @@ import "slick-carousel/slick/slick-theme.css";
 import React from 'react';
 import Slider from 'react-slick';
 import styles from './carouselhorizontal.module.css';
-import logoPath from './asset/PathFinder.png';
+
+// Importation des images des capteurs
+import accelGyroImage from './asset/acelerometre&gyroscope.png';
+import couleurImage from './asset/couleur.png';
+import ultrasonImage from './asset/ultrason.png';
+
 import { useLanguage } from '../../context/LanguageContext'; // Importer le contexte de langue
 
 interface Card {
@@ -16,46 +21,36 @@ interface Card {
 const cards: Record<string, Card[]> = {
   fr: [
     {
-      title: 'Autonomie solaire',
-      description: 'Grâce à l\'intégration de panneaux solaires de pointe...',
-      icon: logoPath,
+      title: 'Accéléromètre + Gyroscope',
+      description: '1 accéléromètre et gyroscope : Ces capteurs permettent de mesurer les accélérations linéaires et les rotations, essentiels pour la navigation et la stabilisation du robot.',
+      icon: accelGyroImage,
     },
     {
-      title: 'Exploration autonome',
-      description: 'Nos robots peuvent explorer sans intervention humaine...',
-      icon: logoPath,
+      title: 'Capteur de Couleur',
+      description: '1 capteur de couleur : Utilisé pour détecter les couleurs environnantes, ce capteur aide le robot à identifier et différencier les objets en fonction de leur couleur.',
+      icon: couleurImage,
     },
     {
-      title: 'Technologie avancée',
-      description: 'Équipé des dernières technologies pour maximiser l\'efficacité...',
-      icon: logoPath,
-    },
-    {
-      title: 'Durabilité exceptionnelle',
-      description: 'Conçu pour durer dans les environnements les plus extrêmes...',
-      icon: logoPath,
+      title: 'Capteur Ultrason',
+      description: '4 capteurs ultrason : Ces capteurs permettent au robot de mesurer les distances aux objets environnants, essentiels pour éviter les obstacles et naviguer en toute sécurité.',
+      icon: ultrasonImage,
     },
   ],
   en: [
     {
-      title: 'Solar Autonomy',
-      description: 'Thanks to the integration of advanced solar panels...',
-      icon: logoPath,
+      title: 'Accelerometer + Gyroscope',
+      description: '1 accelerometer and gyroscope: These sensors measure linear accelerations and rotations, essential for navigation and robot stabilization.',
+      icon: accelGyroImage,
     },
     {
-      title: 'Autonomous Exploration',
-      description: 'Our robots can explore without human intervention...',
-      icon: logoPath,
+      title: 'Color Sensor',
+      description: '1 color sensor: Used to detect surrounding colors, this sensor helps the robot identify and differentiate objects based on their color.',
+      icon: couleurImage,
     },
     {
-      title: 'Advanced Technology',
-      description: 'Equipped with the latest technologies to maximize efficiency...',
-      icon: logoPath,
-    },
-    {
-      title: 'Exceptional Durability',
-      description: 'Designed to last in the most extreme environments...',
-      icon: logoPath,
+      title: 'Ultrasonic Sensor',
+      description: '4 ultrasonic sensors: These sensors allow the robot to measure distances to surrounding objects, essential for obstacle avoidance and safe navigation.',
+      icon: ultrasonImage,
     },
   ]
 };

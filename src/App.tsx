@@ -1,13 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
+import Footer from './components/footer/footer';
 import TextAccueil from './components/textAccueil/textAcceuil';
 import Parallax from './components/Parallax/Parallax';
 import Textanim from './components/Textanim/Textanim';
-import Textanim2 from './components/Textanim2/Textanim2';
-import Labyrinthe from './components/Labyrinthe/Labyrinthe';
 import CardsRobot from './components/cardsRobot/cardsRobot';
+import Textanim2 from './components/Textanim2/Textanim2';
 import CardsLabyrinthe from './components/cardsLabyrinthe/cardsLabyrinthe';
+import Labyrinthe from './components/Labyrinthe/Labyrinthe';
 import CarouseHorizontal from './components/carouselHorizontal/carouselHorizontal';
 import { SkillsContainer } from './components/skill/Skills';
 import { LanguageProvider } from './context/LanguageContext';
@@ -40,6 +41,7 @@ const App: React.FC = () => {
           <Route path="/mini-jeux" element={<MiniJeux />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </Router>
     </LanguageProvider>
   );

@@ -31,7 +31,7 @@ const ScrollAnimationSection = () => {
         };
     }, []);
     const headingText = language === 'fr'
-        ? 'Explorer de nouveaux horizons grâce à notre robot autonome'
+        ? 'Explorez de nouveaux horizons grâce à notre robot autonome'
         : 'Explore new horizons with our autonomous robot';
     return (_jsx("section", { className: styles.mazeContainer, children: _jsx("div", { ref: sectionRef, className: styles.section, children: _jsx("h1", { ref: textRef, className: styles.heading, children: headingText }) }) }));
 };

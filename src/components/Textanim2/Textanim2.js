@@ -31,7 +31,7 @@ const ScrollAnimationSection = () => {
         };
     }, []);
     const headingText = language === 'fr'
-        ? 'Un tracer unique vous attends'
+        ? 'Un tracé unique vous attend'
         : 'A unique path awaits you';
     return (_jsx("section", { className: styles.mazeContainer, children: _jsx("div", { ref: sectionRef, className: styles.section, children: _jsx("h1", { ref: textRef, className: styles.heading, children: headingText }) }) }));
 };

@@ -24,15 +24,23 @@ export const PopupContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;  // cela place le texte en bas
+  flex-direction: row;  // changer en row pour placer l'image et le texte côte à côte
   padding: 2rem;
 `;
 
 export const PopupImage = styled.img`
-  width: 100%;
+  width: 40%;  // réduire la taille de l'image
   height: auto;
   border-radius: 20px;
+`;
+
+export const DescriptionContainer = styled.div`
+  width: 60%;  // le reste de l'espace pour la description
+  color: white;
+  padding-left: 2rem;  // espacement entre l'image et la description
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const CloseButton = styled.button`
@@ -47,7 +55,5 @@ export const CloseButton = styled.button`
 `;
 
 export const InstructionText = styled.p`
-  color: white;
-  text-align: center;
-  margin-top: -2rem; // ajuster en fonction de la hauteur de votre image
+  margin-top: 1rem; // ajuster en fonction de la hauteur de votre image
 `;

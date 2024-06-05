@@ -1,6 +1,6 @@
 // src/components/cardsRobot/Popup.tsx
 import React from 'react';
-import { Overlay, PopupContainer, PopupImage, CloseButton, InstructionText } from './Popup.styles';
+import { Overlay, PopupContainer, PopupImage, CloseButton, DescriptionContainer, InstructionText } from './Popup.styles';
 import Robot_detourer from './asset/robot_detourer.png';
 
 type PopupProps = {
@@ -18,7 +18,11 @@ const Popup: React.FC<PopupProps> = ({ isVisible, onClose, imageSrc, instruction
       <PopupContainer>
         <CloseButton onClick={onClose}>×</CloseButton>
         <PopupImage src={Robot_detourer} alt="Vue 3D" />
-        <InstructionText>{instructions}</InstructionText>
+        <DescriptionContainer>
+          <h2>Description du Robot</h2>
+          <p>Notre robot autonome navigue intelligemment dans un labyrinthe grâce à l'IA et à une multitude de capteurs sophistiqués.</p>
+          <InstructionText>{instructions}</InstructionText>
+        </DescriptionContainer>
       </PopupContainer>
     </Overlay>
   );

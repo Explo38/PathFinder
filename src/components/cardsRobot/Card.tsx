@@ -37,12 +37,12 @@ const Card: React.FC<CardProps> = ({ onOpenPopup }) => {
     fr: {
       title: "La Révolution est là",
       subtitle: "Découvrez de nouveaux horizons",
-      description: "Ceci est la description en français du contenu de la carte. Vous pouvez ajouter des détails supplémentaires ici."
+      description: "Notre robot autonome navigue intelligemment dans un labyrinthe grâce à l'IA et à une multitude de capteurs sophistiqués."
     },
     en: {
       title: "The Revolution is Here",
       subtitle: "Discover New Horizons",
-      description: "This is the English description of the card content. You can add more details here."
+      description: "Our autonomous robot navigates intelligently through a maze using AI and a multitude of sophisticated sensors."
     }
   };
 
@@ -52,7 +52,7 @@ const Card: React.FC<CardProps> = ({ onOpenPopup }) => {
         <CardTitle>{textContent[language].title}</CardTitle>
         <CardSubtitle>{textContent[language].subtitle}</CardSubtitle>
         <p>{textContent[language].description}</p>
-        <CardButton onClick={onOpenPopup}>3D View</CardButton>
+        <CardButton onClick={onOpenPopup}>View</CardButton>
       </CardContent>
       <CardImage src={Robot_detourer} alt="Robot détouré" />
     </CardContainer>

@@ -36,7 +36,7 @@ const ScrollAnimationSection: React.FC = () => {
   }, []);
 
   const headingText = language === 'fr'
-    ? 'Un tracer unique vous attends'
+    ? 'Un tracé unique vous attend'
     : 'A unique path awaits you';
 
   return (

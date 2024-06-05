@@ -36,7 +36,7 @@ const ScrollAnimationSection: React.FC = () => {
   }, []);
 
   const headingText = language === 'fr' 
-    ? 'Explorer de nouveaux horizons grâce à notre robot autonome'
+    ? 'Explorez de nouveaux horizons grâce à notre robot autonome'
     : 'Explore new horizons with our autonomous robot';
 
   return (

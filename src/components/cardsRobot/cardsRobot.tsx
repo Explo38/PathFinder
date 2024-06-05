@@ -17,8 +17,8 @@ const CardsRobot: React.FC = () => {
   };
 
   const popupInstructions: { [key: string]: string } = {
-    fr: "Utilisez la molette de défilement vers le bas pour commencer la vue 3D.",
-    en: "Use the scroll wheel to start the 3D view."
+    fr: "",
+    en: ""
   };
 
   return (
