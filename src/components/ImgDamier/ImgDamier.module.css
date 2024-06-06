@@ -1,3 +1,12 @@
+/* Add this CSS rule for the profile images */
+.profileImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Existing CSS */
 .grid {
   margin-top: 150px;
   display: grid;
@@ -38,22 +47,58 @@
 }
 
 /* Case large */
-.wideCard {
-  grid-column: span 3; /* Prend toute la largeur de la grille */
+.presentationCard {
+  display: flex;
   background: linear-gradient(145deg, #8438df, #f64b97);
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 20px;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.wideImage {
-  width: 50%;
-  height: 500px;
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.groupImage {
+  width: 90%;
+  height: auto;
+  max-height: 400px;
   border-radius: 20px;
+}
+
+.presentationText {
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  flex: 1;
+  padding: 20px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ccc; /* Placeholder for profile pictures */
+  margin-bottom: 10px;
 }
 
 /* Média queries pour les petits écrans */
@@ -66,17 +111,21 @@
     width: 100%;
   }
 
-  .wideCard {
-    grid-column: span 1;
+  .presentationCard {
+    flex-direction: column;
+  }
+
+  .left, .right {
+    width: 100%;
+  }
+
+  .right {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .wideCard {
-    grid-column: span 2;
   }
 }

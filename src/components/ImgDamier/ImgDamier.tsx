@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ImgDamier.module.css';
+import { useLanguage } from '../../context/LanguageContext';
 
 // Importation des images
 import lab1 from './asset/lab.jpg';
@@ -10,6 +11,12 @@ import robot2 from './asset/robot2.png';
 import robot3 from './asset/robot3.png';
 import wideImage from './asset/robotcomplet.png'; // Importez l'image pour la grande case
 
+// Importation des photos de profil
+import profileIliana from './asset/profileIliana.jpg';
+import profileCyrian from './asset/profileCyrian.jpg';
+import profileYohann from './asset/profileYohann.jpg';
+import profileNathan from './asset/profileNathan.jpg';
+
 const images = [
   { id: 1, src: lab1, text: '' },
   { id: 2, src: lab2, text: '' },
@@ -19,12 +26,36 @@ const images = [
   { id: 6, src: robot3, text: '' },
 ];
 
+const textContent = {
+  fr: {
+    presentation: "Nous sommes 4 étudiant de BTS SNIR au Lycée Saint Michel Annecy. Pathfinder est née suite à la présentation de nos projet finaux, qui était de faire un robot se déplaçant dans un labyrinthe en toute autonomie.",
+    profiles: [
+      { name: 'Iliana', role: 'Jeux de donnée', photo: wideImage },
+      { name: 'Cyrian', role: 'Site Web', photo: wideImage },
+      { name: 'Yohann', role: 'API & Base de donnée', photo: wideImage },
+      { name: 'Nathan', role: 'Développement du robot', photo: wideImage },
+    ]
+  },
+  en: {
+    presentation: "We are 4 students of BTS SNIR at Lycée Saint Michel Annecy. Pathfinder was born following the presentation of our final projects, which was to make a robot that moves in a maze autonomously.",
+    profiles: [
+      { name: 'Iliana', role: 'Data Games', photo: wideImage },
+      { name: 'Cyrian', role: 'Website', photo: wideImage },
+      { name: 'Yohann', role: 'API & Database', photo: wideImage },
+      { name: 'Nathan', role: 'Robot Development', photo: wideImage },
+    ]
+  }
+};
+
 const ImgDamier: React.FC = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const { language, setLanguage } = useLanguage();
 
   const handleClick = (id: number) => {
     setSelectedId(id);
   };
+
+  const content = textContent[language as 'fr' | 'en'];
 
   return (
     <>
@@ -40,8 +71,24 @@ const ImgDamier: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className={styles.wideCard}>
-        <img src={wideImage} alt="Wide Image" className={styles.wideImage} />
+      <div className={styles.presentationCard}>
+        <div className={styles.left}>
+          <img src={wideImage} alt="Group Image" className={styles.groupImage} />
+          <p className={styles.presentationText}>
+            {content.presentation}
+          </p>
+        </div>
+        <div className={styles.right}>
+          {content.profiles.map((profile, index) => (
+            <div className={styles.profile} key={index}>
+              <div className={styles.profilePic}>
+                <img src={profile.photo} alt={profile.name} className={styles.profileImage} />
+              </div>
+              <p>{profile.name}</p>
+              <p>{profile.role}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
