@@ -21,28 +21,33 @@ import './App.css';
 const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <Router>
-        <AnalyticsListener />
-        <Header />
-        <Routes>
-          <Route path="/" element={<>
-              <TextAccueil />
-              <Parallax />
-              <Textanim />
-              <CardsRobot />
-              <Textanim2 />
-              <CardsLabyrinthe />
-              <Labyrinthe />
-              <SkillsContainer />
-              <CarouseHorizontal />
-              <ImgDamier />
-            </>} 
-          />
-          <Route path="/mini-jeux" element={<MiniJeux />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <div className="appContainer">
+        <Router>
+          <AnalyticsListener />
+          <Header />
+          <main className="content">
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <TextAccueil />
+                  <Parallax />
+                  <Textanim />
+                  <CardsRobot />
+                  <Textanim2 />
+                  <CardsLabyrinthe />
+                  <Labyrinthe />
+                  <SkillsContainer />
+                  <CarouseHorizontal />
+                  <ImgDamier />
+                </>
+              } />
+              <Route path="/mini-jeux" element={<MiniJeux />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+        </Router>
+      </div>
     </LanguageProvider>
   );
 };

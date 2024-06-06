@@ -1,21 +1,22 @@
+/* footer.module.css */
 .footer {
   background: linear-gradient(145deg, #8438df, #f64b97);
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 180px; /* Ajouté pour ajouter une marge au-dessus du footer */
-  flex-wrap: wrap; /* Permet la réorganisation sur les petits écrans */
+  flex-wrap: wrap;
+  margin-top: 250px;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 20px; /* Ajouté pour espacer les éléments sur petits écrans */
+  margin-bottom: 20px;
 }
 
 .logo {
-  width: 100px; /* Augmenté pour rendre le logo plus grand */
+  width: 100px;
   height: auto;
 }
 
@@ -28,12 +29,12 @@
   padding: 0;
   margin: 0;
   display: flex;
-  flex-wrap: wrap; /* Permet la réorganisation sur les petits écrans */
+  flex-wrap: wrap;
 }
 
 .navItem {
   color: white;
-  margin: 0 15px; /* Ajouté pour espacer les liens horizontalement */
+  margin: 0 15px;
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -42,7 +43,6 @@
   color: #ccc;
 }
 
-/* Média queries pour les petits écrans */
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
@@ -62,7 +62,7 @@
   }
 
   .navItem {
-    margin: 10px 0; /* Espacement vertical pour les petits écrans */
+    margin: 10px 0;
   }
 
   .logoContainer {
