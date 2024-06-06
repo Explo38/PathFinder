@@ -22,34 +22,34 @@ const cards: Record<string, Card[]> = {
   fr: [
     {
       title: 'Accéléromètre + Gyroscope',
-      description: '1 accéléromètre et gyroscope : Ces capteurs permettent de mesurer les accélérations linéaires et les rotations, essentiels pour la navigation et la stabilisation du robot.',
+      description: 'Ces capteurs permettent de mesurer les accélérations linéaires et les rotations, essentiels pour la navigation et la stabilisation du robot.',
       icon: accelGyroImage,
     },
     {
       title: 'Capteur de Couleur',
-      description: '1 capteur de couleur : Utilisé pour détecter les couleurs environnantes, ce capteur aide le robot à identifier et différencier les objets en fonction de leur couleur.',
+      description: 'Utilisé pour détecter les couleurs environnantes, ce capteur aide le robot à identifier et différencier les objets en fonction de leur couleur.',
       icon: couleurImage,
     },
     {
       title: 'Capteur Ultrason',
-      description: '4 capteurs ultrason : Ces capteurs permettent au robot de mesurer les distances aux objets environnants, essentiels pour éviter les obstacles et naviguer en toute sécurité.',
+      description: 'Ces capteurs permettent au robot de mesurer les distances aux objets environnants, essentiels pour éviter les obstacles et naviguer en toute sécurité.',
       icon: ultrasonImage,
     },
   ],
   en: [
     {
       title: 'Accelerometer + Gyroscope',
-      description: '1x accelerometer and gyroscope: These sensors measure linear accelerations and rotations, essential for navigation and robot stabilization.',
+      description: 'These sensors measure linear accelerations and rotations, essential for navigation and robot stabilization.',
       icon: accelGyroImage,
     },
     {
       title: 'Color Sensor',
-      description: '1x color sensor: Used to detect surrounding colors, this sensor helps the robot identify and differentiate objects based on their color.',
+      description: 'Used to detect surrounding colors, this sensor helps the robot identify and differentiate objects based on their color.',
       icon: couleurImage,
     },
     {
       title: 'Ultrasonic Sensor',
-      description: '4x ultrasonic sensors: These sensors allow the robot to measure distances to surrounding objects, essential for obstacle avoidance and safe navigation.',
+      description: 'These sensors allow the robot to measure distances to surrounding objects, essential for obstacle avoidance and safe navigation.',
       icon: ultrasonImage,
     },
   ]
