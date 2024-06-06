@@ -12,6 +12,7 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  
 `;
 
 export const PopupContainer = styled.div`
@@ -26,6 +27,7 @@ export const PopupContainer = styled.div`
   display: flex;
   flex-direction: row;  // changer en row pour placer l'image et le texte côte à côte
   padding: 2rem;
+  box-shadow: 0px 0px 15px rgba(227, 228, 237, 0.37);
 `;
 
 export const PopupImage = styled.img`

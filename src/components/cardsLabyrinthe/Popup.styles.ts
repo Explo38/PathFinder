@@ -27,6 +27,7 @@ export const PopupContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;  // cela place le texte en bas
   padding: 2rem;
+  box-shadow: 0px 0px 15px rgba(227, 228, 237, 0.37);
 `;
 
 export const PopupImage = styled.img`
