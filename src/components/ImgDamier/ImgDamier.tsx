@@ -30,19 +30,19 @@ const textContent = {
   fr: {
     presentation: "Nous sommes 4 étudiant de BTS SNIR au Lycée Saint Michel Annecy. Pathfinder est née suite à la présentation de nos projet finaux, qui était de faire un robot se déplaçant dans un labyrinthe en toute autonomie.",
     profiles: [
-      { name: 'Iliana', role: 'Jeux de donnée', photo: wideImage },
-      { name: 'Cyrian', role: 'Site Web', photo: wideImage },
-      { name: 'Yohann', role: 'API & Base de donnée', photo: wideImage },
-      { name: 'Nathan', role: 'Développement du robot', photo: wideImage },
+      { name: 'Iliana', role: 'Jeux de donnée', photo: profileIliana },
+      { name: 'Cyrian', role: 'Site Web', photo: profileCyrian },
+      { name: 'Yohann', role: 'API & Base de donnée', photo: profileYohann },
+      { name: 'Nathan', role: 'Développement du robot', photo: profileNathan },
     ]
   },
   en: {
     presentation: "We are 4 students of BTS SNIR at Lycée Saint Michel Annecy. Pathfinder was born following the presentation of our final projects, which was to make a robot that moves in a maze autonomously.",
     profiles: [
-      { name: 'Iliana', role: 'Data Games', photo: wideImage },
-      { name: 'Cyrian', role: 'Website', photo: wideImage },
-      { name: 'Yohann', role: 'API & Database', photo: wideImage },
-      { name: 'Nathan', role: 'Robot Development', photo: wideImage },
+      { name: 'Iliana', role: 'Data Games', photo: profileIliana },
+      { name: 'Cyrian', role: 'Website', photo: profileCyrian },
+      { name: 'Yohann', role: 'API & Database', photo: profileYohann },
+      { name: 'Nathan', role: 'Robot Development', photo: profileNathan },
     ]
   }
 };
