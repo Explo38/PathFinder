@@ -9,13 +9,13 @@ import lab3 from './asset/lab3.jpg';
 import robot1 from './asset/robotcomplet.png';
 import robot2 from './asset/robot2.png';
 import robot3 from './asset/robot3.png';
-import wideImage from './asset/robotcomplet.png'; // Importez l'image pour la grande case
+import wideImage from './asset/groupe.png'; // Importez l'image pour la grande case
 
 // Importation des photos de profil
-import profileIliana from './asset/profileIliana.jpg';
-import profileCyrian from './asset/profileCyrian.jpg';
-import profileYohann from './asset/profileYohann.jpg';
-import profileNathan from './asset/profileNathan.jpg';
+import profileIliana from './asset/iliana.png';
+import profileCyrian from './asset/cyrian.png';
+import profileYohann from './asset/yohann.png';
+import profileNathan from './asset/nathan.png';
 
 const images = [
   { id: 1, src: lab1, text: '' },
@@ -30,7 +30,7 @@ const textContent = {
   fr: {
     presentation: "Nous sommes 4 étudiant de BTS SNIR au Lycée Saint Michel Annecy. Pathfinder est née suite à la présentation de nos projet finaux, qui était de faire un robot se déplaçant dans un labyrinthe en toute autonomie.",
     profiles: [
-      { name: 'Iliana', role: 'Programmation et entraînement du réseau de neurones', photo: wideImage },
+      { name: 'Iliana', role: 'Jeux de donnée', photo: wideImage },
       { name: 'Cyrian', role: 'Site Web', photo: wideImage },
       { name: 'Yohann', role: 'API & Base de donnée', photo: wideImage },
       { name: 'Nathan', role: 'Développement du robot', photo: wideImage },
@@ -39,7 +39,7 @@ const textContent = {
   en: {
     presentation: "We are 4 students of BTS SNIR at Lycée Saint Michel Annecy. Pathfinder was born following the presentation of our final projects, which was to make a robot that moves in a maze autonomously.",
     profiles: [
-      { name: 'Iliana', role: 'Programming and training of the neural network', photo: wideImage },
+      { name: 'Iliana', role: 'Data Games', photo: wideImage },
       { name: 'Cyrian', role: 'Website', photo: wideImage },
       { name: 'Yohann', role: 'API & Database', photo: wideImage },
       { name: 'Nathan', role: 'Robot Development', photo: wideImage },
